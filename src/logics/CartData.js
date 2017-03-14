@@ -68,7 +68,7 @@ CartData.check = (checked, index) => {
 
 CartData.count = computed(() => {
   return CartData.reduce((a, b) => {
-    if(b.checked){
+    if(b.checked && b.valid){
       return a + b.count;
     } else {
       return a;
@@ -78,7 +78,7 @@ CartData.count = computed(() => {
 
 CartData.sum = computed(() => {
   return CartData.reduce((a, b) => {
-    if (b.checked) {
+    if (b.checked && b.valid) {
       return a + b.price * b.count;
     } else {
       return a;
@@ -102,7 +102,5 @@ CartData.toggleAll = (checked) => {
   });
 };
 
-
-
-
 export default CartData;
+
